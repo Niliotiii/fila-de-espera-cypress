@@ -1,4 +1,4 @@
-import { nameLogs } from '../../../utils/name-logs'
+import { nameLogs } from '../../utils/name-logs'
 
 Cypress.Commands.add('secretariaCadastro', () => {
   cy.log(nameLogs('preencher', 'Guias do formulário'))

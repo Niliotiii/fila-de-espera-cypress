@@ -27,7 +27,7 @@ describe('Login', () => {
       cy.wait(500)
       cy.get('body > div.content > div.login-section > div > div.login-card > div.login-card-content > div.login-form > form > button').click()
       cy.wait(500)
-      cy.get('body > div.content > div.login-section > div > div.login-card > div.login-card-content > div.login-form > form > div.alert.alert-danger > div > ul > li').should('contain', 'Acesso inválido')
+      cy.get('body > div.content > div.login-section > div > div.login-card > div.login-card-content > div.login-form > form > div.alert.alert-danger > div > ul > li').should('contain', 'acessar inválido')
     })
 
     it('Realizando login com credenciais válidas', () => {
