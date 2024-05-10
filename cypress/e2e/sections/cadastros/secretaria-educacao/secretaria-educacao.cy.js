@@ -8,7 +8,6 @@ describe('INICIANDO TESTE', () => {
     cy.visit('/dashboard/cadastro/secretaria')
   })
   it('CADASTRO DE SECRETARIA', () => {
-    cy.secretariaCadastro()
+    cy.commands('sections.cadastros.secretaria-educacao')
   })
-
 })
