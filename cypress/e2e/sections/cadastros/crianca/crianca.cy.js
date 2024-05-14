@@ -31,7 +31,7 @@ const responsavel2DataNascimento = responsavel2.dataNascimento
 
 describe('Cadastro de Criança', () => {
     it('FAZENDO: Login', () => {
-        // cy.login(username, password)
+        cy.login(username, password)
     })
     it('ACESSANDO: Cadastro de Criança', () => {
         cy.visit('/dashboard/cadastro/criancas')
