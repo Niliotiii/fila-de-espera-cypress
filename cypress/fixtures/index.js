@@ -1,0 +1,1 @@
+export * from './secretaria-educacao/secretaria-educacao-fixtures.js'

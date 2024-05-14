@@ -1,4 +1,14 @@
-Cypress.Commands.add('login', (username, password) => {
+Cypress.Commands.add('login', (perfil) => {
+    let username = ''
+    let password = ''
+
+    switch (perfil) {
+        case 'ADMINISTRADOR': {
+            username = '05814521279'
+            password = 'Wall1!2@3#yson'
+        }
+    }
+
     cy.log('LIMPANDO: Dados de login')
     cy.clearAllCookies()
     cy.clearAllLocalStorage() 

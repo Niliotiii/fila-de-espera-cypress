@@ -1,6 +1,4 @@
 
-import { textoVerificacao } from '../../fixtures/texto-verificacao'
-
 const agendamento = {
     municipio: '',
     localAtendimento: '',
