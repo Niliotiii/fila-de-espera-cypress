@@ -1,4 +1,4 @@
-Cypress.Commands.add('login', (perfil) => {
+Cypress.Commands.add('AuthLogin', (perfil) => {
     let username = ''
     let password = ''
 

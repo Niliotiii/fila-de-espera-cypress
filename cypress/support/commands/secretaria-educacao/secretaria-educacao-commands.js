@@ -21,6 +21,6 @@ Cypress.Commands.add('SectionsCadastrosSecretaria-educacao', (values) => {
 
   cy.log('GUIA: Contato')
   cy.commands('contato', values)
-
+  cy.get('button').contains('Salvar').click()
   
 }) 

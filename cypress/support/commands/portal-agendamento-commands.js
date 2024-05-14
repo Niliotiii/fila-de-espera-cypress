@@ -35,13 +35,12 @@ Cypress.Commands.add('portalAgendamento', (crianca, responsavel, textoVerificaca
     cy.get('.flex-col > .flex-row > .flex').clear().type(crianca.dataNascimento)
     cy.get('#\\:rn\\:-form-item').type(responsavel.nome)
     cy.get('#\\:rp\\:-form-item').clear().type(responsavel.cpf)
-    console.log(responsavel.telefone)
     cy.get('#\\:rr\\:-form-item').type(responsavel.telefone)
     cy.get('#\\:rt\\:-form-item').type(responsavel.email)
     cy.get('button').contains(textoVerificacao.proximo).click()
     cy.wait(500)
     cy.get('#radix-\\:rv\\: > div.flex.flex-col.space-y-1\\.5.text-center.sm\\:text-left > div').should('contain', 'Confirme os dados para continuar')
-    
+
     cy.log('confirmar dados da guia "Confirmação"')
     cy.wait(500)
     cy.contains(agendamento.municipio).should('exist')
@@ -55,8 +54,8 @@ Cypress.Commands.add('portalAgendamento', (crianca, responsavel, textoVerificaca
     cy.contains(responsavel.cpf).should('exist')
     cy.contains(responsavel.telefone).should('exist')
     cy.contains(responsavel.email).should('exist')
-    
-    
+
+
     cy.log(nameLogs('finalizar', '"Agendamento"'))
     cy.wait(500)
     cy.get('button').contains(textoVerificacao.confirmar).click()
