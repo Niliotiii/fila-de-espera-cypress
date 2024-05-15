@@ -133,6 +133,7 @@ Cypress.Commands.add('TelasCadastrosCrianca', (values) => {
   //     cy.get('#responsavel\\.sexoRes-form-item').find('select').should('have.value', randomOptionValue)
   // })
 
+<<<<<<< HEAD
    // cy.get('#responsavel\\.sexoRes-form-item').find('select').then(select => {
   //     const options = select.find('option')
   //     const randomIndex = Math.floor(Math.random() * options.length)
@@ -157,4 +158,6 @@ Cypress.Commands.add('TelasCadastrosCrianca', (values) => {
   //     cy.get('#responsavel2\\.sexoRes-form-item').find('select').should('have.value', randomOptionValue)
   // })
 
+=======
+>>>>>>> ecb2137904e3b70e2505e639ab3c10805405ec2b
 */
