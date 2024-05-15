@@ -20,6 +20,7 @@
     "faker-br": "^0.4.1"
   },
   "dependencies": {
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "prettier": "^3.2.5"
   }
 }

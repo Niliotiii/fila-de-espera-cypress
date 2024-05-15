@@ -2,7 +2,7 @@ const faker = require('faker');
 
 export const responsavel2Fixtures = {
     nome: faker.name.findName(),
-    cpf: faker.br.cpf({ format: true }),
+    cpf: '05814521279' || faker.br.cpf({ format: true }),
     dataNascimento: new Date(
         new Date().getFullYear() - Math.floor(Math.random() * 23) - 18,
         Math.floor(Math.random() * 12),

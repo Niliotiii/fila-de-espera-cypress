@@ -1,7 +1,6 @@
 const faker = require('faker-br');
 
-import endereco from '../endereco/endereco-fixtures';
-import contato from '../contato/contato-fixtures';
+import { enderecoFixtures as endereco, contatoFixtures as contato } from "../../fixtures"
 
 const nome = faker.name.findName('Escola')
 

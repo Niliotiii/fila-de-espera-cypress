@@ -2,9 +2,6 @@ Cypress.Commands.add('TelasCadastrosUnidade-escolar', (values) => {
 
     cy.log('PREENCHENDO: Guias do formulário')
 
-    cy.log('SELECIONANDO: contexto de Secretaria de Educação')
-    cy.commands('context.secretaria-educacao', values)
-
     cy.log('GUIA: Identificação')
     cy.get('#razaoSocial-form-item').type(values?.razaoSocial)
     cy.get('#nomeFantasia-form-item').type(values?.nomeFantasia)

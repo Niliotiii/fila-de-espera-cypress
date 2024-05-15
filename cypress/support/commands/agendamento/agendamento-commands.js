@@ -5,7 +5,7 @@ const agendamento = {
     horario: ''
 }
 
-Cypress.Commands.add('portalAgendamento', (crianca, responsavel, textoVerificacao) => {
+Cypress.Commands.add('PortalAgendamento', (crianca, responsavel, textoVerificacao) => {
     cy.visit('/agendamento/agendar')
     cy.wait(500)
     cy.get('.h-24 > .flex > .text-lg').should('contain', 'Realizar Agendamento')
