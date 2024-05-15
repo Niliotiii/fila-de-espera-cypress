@@ -1,6 +1,6 @@
 const faker = require('faker-br');
 
-let crianca = {
+export const criancaFixtures = {
     nome: faker.name.findName(),
     cpf: faker.br.cpf({ format: true }),
     dataNascimento: new Date(
@@ -12,6 +12,4 @@ let crianca = {
         month: '2-digit',
         day: '2-digit'
     }),
-}
-
-export default crianca
+};

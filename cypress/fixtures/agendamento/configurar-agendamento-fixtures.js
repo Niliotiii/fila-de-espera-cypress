@@ -6,4 +6,4 @@ export const configurarAgendamentoFixtures = {
     numeroAtendimentoIntervalo: '3' ,
     horarioFimMatutino: '11:30',
     horarioFimVespertino: '17:30',
-}
+};

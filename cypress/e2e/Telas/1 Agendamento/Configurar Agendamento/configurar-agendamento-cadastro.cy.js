@@ -15,4 +15,4 @@ describe('INICIANDO TESTE', () => {
   it('CADASTRANDO: Gerenciar Agendamento', () => {
     cy.commands('telas.agendamento.configurar-agendamento', configurarAgendamentoFixtures)
   })
-}) 
+});

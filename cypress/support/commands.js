@@ -5,7 +5,7 @@ import './commands/portal-agendamento-commands.js'
 import './commands/configurar-agendamento/configurar-agendamento-commands.js'
 import './commands/secretaria-educacao/secretaria-educacao-commands'
 import './commands/context/context-secretaria-educacao-commands.js'
-
+import './commands/unidade-escolar/unidade-escolar-commands.js'
 
 Cypress.Commands.add('commands', (key, params) => {
   const command = key.split('.').map((item) => item.charAt(0).toUpperCase() + item.slice(1)).join('')

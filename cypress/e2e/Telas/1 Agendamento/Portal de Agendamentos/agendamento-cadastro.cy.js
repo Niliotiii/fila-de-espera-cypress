@@ -130,4 +130,4 @@ describe('Cadastro de Agendamento', () => {
       cy.get('.grid > .font-semibold').should('contain', 'Agendamento realizado com sucesso!')
     })
   })
-})
+});

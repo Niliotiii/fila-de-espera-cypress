@@ -1,4 +1,3 @@
-
 const agendamento = {
     municipio: '',
     localAtendimento: '',
@@ -61,5 +60,3 @@ Cypress.Commands.add('portalAgendamento', (crianca, responsavel, textoVerificaca
     cy.get('button').contains(textoVerificacao.confirmar).click()
     cy.get('.grid > .font-semibold').should('contain', 'Agendamento realizado com sucesso!')
 })
-
-

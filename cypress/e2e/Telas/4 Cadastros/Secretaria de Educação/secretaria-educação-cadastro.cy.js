@@ -11,4 +11,4 @@ describe('INICIANDO TESTE', () => {
   it('CADASTRANDO: Secretaria de Educação', () => {
     cy.commands('telas.cadastros.secretaria-educacao', secretariaEducacaoFixtures)
   })
-}) 
+});

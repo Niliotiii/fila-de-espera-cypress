@@ -26,4 +26,4 @@ export const secretariaEducacaoFixtures = {
     telefone: faker.phone.phoneNumber()  || '',
     nomeContato: faker.name.findName()  || '',
     email: faker.internet.email()  || '',
-}
+};

@@ -1,6 +1,6 @@
 import { credencial } from '../../../../fixtures/credencial'
 import crianca from '../../../../fixtures/crianca'
-import endereco from '../../../../fixtures/endereco'
+import endereco from '../../../../fixtures/endereco/endereco'
 import { responsavel, responsavel2 } from '../../../../fixtures/responsavel'
 
 const username = credencial.usuario
@@ -61,4 +61,4 @@ describe('Cadastro de Criança', () => {
             responsavel2DataNascimento,
         )
     })
-})
+});
