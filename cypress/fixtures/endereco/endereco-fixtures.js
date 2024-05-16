@@ -1,7 +1,7 @@
 const faker = require("faker-br");
 
 export const enderecoFixtures = (gerarLocalizacao = false) => {
-  if (!!gerarLocalizacao) {
+  if (gerarLocalizacao) {
     return {
       cep: faker.address.zipCode("#####-###"),
       numero: faker.random.number(),

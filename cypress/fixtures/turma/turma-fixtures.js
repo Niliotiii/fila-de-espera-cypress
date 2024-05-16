@@ -1,8 +1,6 @@
 const faker = require('faker-br');
 const nome = `Turma Teste ${faker.random.number()}`;
 
-const secretariaEducacao = context?.secretariaEducacao;
-
 export const turmaFixtures = {
   secretariaEducacao: 'SEMED Ji-Paraná',
   unidadeEscolar: 'IFRO - CAMPUS JI-PARANA',

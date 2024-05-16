@@ -8,6 +8,7 @@ import './commands/endereco/endereco-commands.js';
 import './commands/secretaria-educacao/secretaria-educacao-commands';
 import './commands/turma/turma-commands.js';
 import './commands/unidade-escolar/unidade-escolar-commands.js';
+import './commands/vaga/vaga-commands.js';
 
 Cypress.Commands.add('commands', (key, params) => {
   const command = key
