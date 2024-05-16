@@ -38,19 +38,61 @@ Cypress.Commands.add('TelasCadastrosCrianca', (values) => {
   cy.get('#responsavel\\.estadoCivil > select').select('Outro', {
     force: true,
   });
-
-  /*
   cy.get(
-    ":nth-child(1) > #responsavel\\.exerceAtividadeProfissional-form-item",
+    ':nth-child(1) > #responsavel\\.exerceAtividadeProfissional-form-item',
   ).click();
-  cy.get("#responsavel\\.profissao-form-item > span").click();
+  cy.get('#responsavel\\.profissao-form-item > span').click();
   cy.get('[placeholder="Pesquise por uma profissão..."]')
     .clear()
-    .type("Aeronauta");
+    .type('Aeronauta');
   cy.get('[data-value="aeronauta"]').click();
-  cy.get(":nth-child(1) > #responsavel\\.resideCrianca-form-item").click();
-  cy.get(":nth-child(2) > #responsavel\\.falecido-form-item").click();
-  cy.get("#responsavel2\\.parentesco > select").select("Pai", { force: true });
+  cy.get(':nth-child(1) > #responsavel\\.resideCrianca-form-item').click();
+  cy.get(':nth-child(2) > #responsavel\\.falecido-form-item').click();
+  cy.get('button').contains('Próximo').click();
+
+  cy.log('GUIA: Contatos');
+  cy.commands('contato', values.contato);
+  cy.get('button').contains('Salvar').click();
+  cy.wait(1000);
+  cy.get('button').contains('Cancelar').click();
+  cy.contains('Dados da criança cadastrados com sucesso').should('exist');
+});
+
+/*
+  // cy.get('#responsavel\\.parentesco').find('select').then(select => {
+  //     const options = select.find('option')
+  //     const randomIndex = Math.floor(Math.random() * options.length)
+  //     const randomOptionValue = options[randomIndex].value
+  //     cy.get('#responsavel\\.parentesco').find('select').should('have.value', randomOptionValue)
+  //     cy.get('#responsavel\\.sexoRes-form-item').find('select').should('have.value', randomOptionValue)
+  // })
+
+  // cy.get('#responsavel\\.sexoRes-form-item').find('select').then(select => {
+  //     const options = select.find('option')
+  //     const randomIndex = Math.floor(Math.random() * options.length)
+  //     const randomOptionValue = options[randomIndex].value
+  //     cy.get('#responsavel\\.sexoRes-form-item').find('select').select(randomOptionValue, { force: true })
+  //     cy.get('#responsavel\\.sexoRes-form-item').find('select').should('have.value', randomOptionValue)
+  // })
+ 
+  // cy.get('#responsavel\\.estadoCivil').find('select').then(select => {
+  //     const options = select.find('option')
+  //     const randomIndex = Math.floor(Math.random() * options.length)
+  //     const randomOptionValue = options[randomIndex].value
+  //     cy.get('#responsavel\\.estadoCivil').find('select').select(randomOptionValue, { force: true })
+  //     cy.get('#responsavel\\.estadoCivil').find('select').should('have.value', randomOptionValue)
+  // })
+
+  // cy.get('#responsavel2\\.parentesco').find('select').then(select => {
+  //     const options = select.find('option')
+  //     const randomIndex = Math.floor(Math.random() * options.length)
+  //     const randomOptionValue = options[randomIndex].value
+  //     cy.get('#responsavel2\\.parentesco').find('select').should('have.value', randomOptionValue)
+  //     cy.get('#responsavel2\\.sexoRes-form-item').find('select').should('have.value', randomOptionValue)
+  // })
+
+  // responsavel2
+    cy.get("#responsavel2\\.parentesco > select").select("Pai", { force: true });
  
   cy.get("#responsavel2\\.nomeRes-form-item").clear().type(responsavel2Nome);
   cy.get("#responsavel2\\.cpfRes-form-item").clear().type(responsavel2CPF);
@@ -93,71 +135,4 @@ Cypress.Commands.add('TelasCadastrosCrianca', (values) => {
   cy.get(":nth-child(1) > #responsavel2\\.resideCrianca-form-item").click();
   cy.get(":nth-child(2) > #responsavel2\\.falecido-form-item").click();
 
-  cy.log('CLICANDO no botão "Próximo"');
-  cy.wait(500);
-  cy.get("button").contains("Próximo").click();
-  cy.wait(500);
-
-  cy.log('PREENCHENDO dados da guia "Contatos"');
-  cy.wait(500);
-  cy.get("#telefones\\.0\\.numero-form-item").clear().type(responsavelTelefone);
-
-  cy.get("#telefones\\.0\\.tipo > select").select("Telefone celular", {
-    force: true,
-  });
-  // cy.get('#telefones\\.0\\.tipo').find('select').then(select => {
-  //     const options = select.find('option')
-  //     const randomIndex = Math.floor(Math.random() * options.length)
-  //     const randomOptionValue = options[randomIndex].value
-  //     cy.get('#telefones\\.0\\.tipo').find('select').select(randomOptionValue, { force: true })
-  //     cy.get('#telefones\\.0\\.tipo').find('select').should('have.value', randomOptionValue)
-  // })
-  cy.get("#telefones\\.0\\.contatoPreferencial-form-item")
-    .clear()
-    .type(responsavelNome);
-  cy.get("#emails\\.0\\.email-form-item").clear().type(responsavelEmail);
-
-  cy.log('CLICANDO no botão "Salvar"');
-  cy.wait(500);
-  cy.get("button").contains("Salvar").click();
-  cy.wait(500);
-  cy.contains("Dados da criança cadastrados com sucesso").should("exist");*/
-});
-
-/*
-  // cy.get('#responsavel\\.parentesco').find('select').then(select => {
-  //     const options = select.find('option')
-  //     const randomIndex = Math.floor(Math.random() * options.length)
-  //     const randomOptionValue = options[randomIndex].value
-  //     cy.get('#responsavel\\.parentesco').find('select').should('have.value', randomOptionValue)
-  //     cy.get('#responsavel\\.sexoRes-form-item').find('select').should('have.value', randomOptionValue)
-  // })
-
-<<<<<<< HEAD
-   // cy.get('#responsavel\\.sexoRes-form-item').find('select').then(select => {
-  //     const options = select.find('option')
-  //     const randomIndex = Math.floor(Math.random() * options.length)
-  //     const randomOptionValue = options[randomIndex].value
-  //     cy.get('#responsavel\\.sexoRes-form-item').find('select').select(randomOptionValue, { force: true })
-  //     cy.get('#responsavel\\.sexoRes-form-item').find('select').should('have.value', randomOptionValue)
-  // })
- 
-  // cy.get('#responsavel\\.estadoCivil').find('select').then(select => {
-  //     const options = select.find('option')
-  //     const randomIndex = Math.floor(Math.random() * options.length)
-  //     const randomOptionValue = options[randomIndex].value
-  //     cy.get('#responsavel\\.estadoCivil').find('select').select(randomOptionValue, { force: true })
-  //     cy.get('#responsavel\\.estadoCivil').find('select').should('have.value', randomOptionValue)
-  // })
-
-   // cy.get('#responsavel2\\.parentesco').find('select').then(select => {
-  //     const options = select.find('option')
-  //     const randomIndex = Math.floor(Math.random() * options.length)
-  //     const randomOptionValue = options[randomIndex].value
-  //     cy.get('#responsavel2\\.parentesco').find('select').should('have.value', randomOptionValue)
-  //     cy.get('#responsavel2\\.sexoRes-form-item').find('select').should('have.value', randomOptionValue)
-  // })
-
-=======
->>>>>>> ecb2137904e3b70e2505e639ab3c10805405ec2b
 */
