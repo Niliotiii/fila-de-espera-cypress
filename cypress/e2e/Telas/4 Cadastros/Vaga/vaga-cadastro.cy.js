@@ -1,4 +1,4 @@
-import { vagaFixtures } from "../../../../fixtures";
+import { vagaFixtures as vaga } from "../../../../fixtures";
 
 describe("INICIANDO TESTE", () => {
   it("FAZENDO: Login", () => {
@@ -18,6 +18,6 @@ describe("INICIANDO TESTE", () => {
   });
 
   it("CADASTRANDO: Vagas", () => {
-    cy.commands("telas.cadastros.vaga", vagaFixtures());
+    cy.commands("telas.cadastros.vaga", vaga());
   });
 });
