@@ -30,6 +30,11 @@ Cypress.Commands.add('TelasCadastrosServidor', (values) => {
   cy.get('#nivelEscolaridade > select').select(values.nivelEscolaridade, {
     force: true,
   });
+  cy.get(
+    '#pessoa\\.foto > div.mt-4.flex.items-center.justify-start > button',
+  ).click();
+  cy.get('#input-file-upload').attachFile('assets/images/batman.png');
+  cy.get('button').contains('Salvar').click();
   cy.get('button').contains('Próximo').click();
 
   cy.log('GUIA: Contatos');

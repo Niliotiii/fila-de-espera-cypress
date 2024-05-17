@@ -1,3 +1,4 @@
+import 'cypress-file-upload';
 import './commands/agendamento/agendamento-commands.js';
 import './commands/agendamento/configurar-agendamento-commands.js';
 import './commands/auth/auth-login-commands.js';
