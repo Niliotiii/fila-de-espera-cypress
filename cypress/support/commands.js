@@ -6,6 +6,7 @@ import './commands/contato/contato-commands.js';
 import './commands/context/context-secretaria-educacao-commands.js';
 import './commands/crianca/crianca-commands.js';
 import './commands/endereco/endereco-commands.js';
+import './commands/gerenciar-criterios/gerenciar-criterios-commands.js';
 import './commands/secretaria-educacao/secretaria-educacao-commands';
 import './commands/servidor/servidor-commands.js';
 import './commands/turma/turma-commands.js';
