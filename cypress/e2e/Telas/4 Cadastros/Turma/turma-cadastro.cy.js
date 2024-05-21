@@ -9,12 +9,11 @@ describe('INICIANDO TESTE', () => {
   });
   it('ACESSANDO: Cadastrar Turmas', () => {
     cy.visit('/dashboard/cadastro/turma');
+  });
+  it('CADASTRANDO: Turma', () => {
     cy.get(
       'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
     ).should('contain', 'Cadastrar Turmas');
-  });
-
-  it('CADASTRANDO: Turma', () => {
     cy.commands('telas.cadastros.turma', turma);
   });
 });
