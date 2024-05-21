@@ -5,7 +5,7 @@ describe('INICIANDO TESTE', () => {
     cy.commands('auth.Login', 'ADMINISTRADOR');
   });
   it('SELECIONANDO: Contexto', () => {
-    cy.commands('context');
+    cy.commands('context-sem-unidade-escolar');
   });
   it('ACESSANDO: Entrevistar Candidato', () => {
     cy.wait(500);
