@@ -13,16 +13,10 @@ describe('INICIANDO TESTE', () => {
   it('ACESSANDO: Gerenciar Critérios', () => {
     cy.visit('/dashboard/criterios/gerenciar-criterios');
   });
-  it('CADASTRANDO: 1° Critério', () => {
-    cy.commands(
-      'telas.gerenciar-criterios',
-      gerenciarCriteriosFixtures?.criterio1,
-    );
-  });
-  it('CADASTRANDO: 2° Critério', () => {
-    cy.commands(
-      'telas.gerenciar-criterios',
-      gerenciarCriteriosFixtures?.criterio2,
-    );
+
+  gerenciarCriteriosFixtures?.criterios.forEach((criterio, index) => {
+    it(`CADASTRANDO: ${index + 1}° Critério`, () => {
+      cy.commands('telas.gerenciar-criterios', criterio);
+    });
   });
 });
