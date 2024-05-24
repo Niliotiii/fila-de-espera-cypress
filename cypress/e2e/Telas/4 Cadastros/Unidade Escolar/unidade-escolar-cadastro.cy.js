@@ -5,10 +5,7 @@ describe('INICIANDO TESTE', () => {
     cy.commands('auth.Login', 'ADMINISTRADOR');
   });
   it('SELECIONANDO: Contexto de Secretaria de Educação', () => {
-    cy.commands(
-      'context.secretaria-educacao',
-      unidadeEscolarFixtures?.secretariaEducacao,
-    );
+    cy.commands('context-sem-unidade-escolar');
   });
   it('ACESSANDO: Cadastrar Secretaria de Educação', () => {
     cy.visit('/dashboard/cadastro/unidade-escolar');
