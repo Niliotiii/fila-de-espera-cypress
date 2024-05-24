@@ -1,6 +1,4 @@
 import { contatoFixtures as contato } from '../contato/contato-fixtures';
-import { enderecoFixtures as endereco } from '../endereco/endereco-fixtures';
-import { responsavelFixtures as responsavel } from '../responsavel/responsavel-fixtures';
 
 const faker = require('faker-br');
 
@@ -22,7 +20,7 @@ export const servidorFixtures = {
     day: '2-digit',
   }),
   sexo: 'Masculino',
-  raca:'Parda',
+  raca: 'Parda',
   paisOrigem: 'Brasil',
   uf: 'RO',
   municipioNascimento: 'Porto Velho',
