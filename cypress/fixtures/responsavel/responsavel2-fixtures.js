@@ -1,6 +1,6 @@
 const faker = require('faker-br');
 
-export const responsavelFixtures = {
+export const responsavel2Fixtures = {
   nome: faker.name.findName(),
   cpf: faker.br.cpf({ format: true }),
   parentesco: 'Pai',
@@ -13,11 +13,11 @@ export const responsavelFixtures = {
     month: '2-digit',
     day: '2-digit',
   }),
-  paisOrigem: 'Brasil',
+  paisOrigem: 'Albânia',
   registroNacionalEstrangeiro: 'RNE123',
   protocoloRefugiado: 'PR123',
   sexo: 'Outro',
   estadoCivil: 'Outro',
-  profissao: 'Aeronauta',
+  profissao: 'Economista',
   cepLocalTrabalho: faker.address.zipCode('#####-###'),
 };

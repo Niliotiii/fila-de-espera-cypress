@@ -1,6 +1,7 @@
 import { contatoFixtures as contato } from '../contato/contato-fixtures';
 import { enderecoFixtures as endereco } from '../endereco/endereco-fixtures';
 import { responsavelFixtures as responsavel } from '../responsavel/responsavel-fixtures';
+import { responsavel2Fixtures as responsavel2 } from '../responsavel/responsavel2-fixtures';
 
 const faker = require('faker-br');
 
@@ -19,10 +20,14 @@ export const criancaFixtures = {
     day: '2-digit',
   }),
   numeroSUS: '123456789012345',
+  paisOrigem: 'Brasil',
+  registroNacionalEstrangeiro: 'RNE123',
+  protocoloRefugiado: 'PR123',
   // Dados Residenciais
-  endereco: endereco(),
+  endereco: endereco(true),
   // Filiação
   responsavel: responsavel,
+  responsavel2: responsavel2,
   // Contato
   contato: contato,
 };
