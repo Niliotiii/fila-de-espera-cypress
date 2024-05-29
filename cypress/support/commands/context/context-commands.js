@@ -27,7 +27,7 @@ Cypress.Commands.add('Context', () => {
   cy.get('[placeholder="Pesquise uma unidade escolar"]').type(
     context.unidadeEscolar,
   );
-  cy.wait(500);
+  cy.wait(1000);
   cy.get('body').type('{enter}');
 });
 

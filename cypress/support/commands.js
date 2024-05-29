@@ -12,12 +12,14 @@ import './commands/crianca/crianca-visualizar-commands.js';
 import './commands/endereco/endereco-commands.js';
 import './commands/entrevista/entrevista-commands.js';
 import './commands/gerenciar-criterios/gerenciar-criterios-commands.js';
+import './commands/reserva/reserva-commands.js';
 import './commands/secretaria-educacao/secretaria-educacao-commands';
 import './commands/servidor/servidor-cadastro-commands.js';
 import './commands/servidor/servidor-consulta-commands.js';
 import './commands/servidor/servidor-delete-commands.js';
 import './commands/turma/turma-commands.js';
 import './commands/unidade-escolar/unidade-escolar-commands.js';
+import './commands/utils/index.js';
 import './commands/vaga/vaga-commands.js';
 
 Cypress.Commands.add('commands', (key, params) => {

@@ -4,11 +4,8 @@ describe('INICIANDO TESTE', () => {
   it('FAZENDO: Login', () => {
     cy.commands('auth.Login', 'ADMINISTRADOR');
   });
-  it('SELECIONANDO: Contexto de Secretaria de Educação', () => {
-    cy.commands(
-      'context.secretaria-educacao',
-      vagaFixtures()?.secretariaEducacao,
-    );
+  it('SELECIONANDO: Contexto', () => {
+    cy.commands('context');
   });
   it('ACESSANDO: Cadastrar Vaga', () => {
     cy.visit('/dashboard/cadastro/gerar-vaga');

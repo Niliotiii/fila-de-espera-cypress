@@ -1,12 +1,11 @@
-const faker = require('faker-br');
-const nome = `Turma Teste ${faker.random.number()}`;
+import { contextFixtures as context } from '../context/context-fixtures';
 
 export const turmaFixtures = {
-  secretariaEducacao: 'SEMED Ji-Paraná',
-  unidadeEscolar: 'IFRO - CAMPUS JI-PARANA',
-  etapa: 'Pré/Jardim II – 5 anos a 5 anos e 11 meses',
-  nome: nome,
-  turno: 'Integral',
+  secretariaEducacao: context.secretariaEducacao,
+  unidadeEscolar: context.unidadeEscolar,
+  etapa: context.etapa,
+  nome: context.nomeTurma,
+  turno: context.turno,
   periodoInicial: '01/01/2024',
   periodoFinal: '31/12/2024',
   horaInicial: '07:00',

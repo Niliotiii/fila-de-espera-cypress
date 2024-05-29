@@ -3,6 +3,7 @@ export * from './contato/contato-fixtures.js';
 export * from './crianca/crianca-fixtures.js';
 export * from './endereco/endereco-fixtures.js';
 export * from './entrevista/entrevista-fixtures.js';
+export * from './reserva/reserva-fixtures.js';
 export * from './responsavel/responsavel-fixtures.js';
 export * from './secretaria-educacao/secretaria-educacao-fixtures.js';
 export * from './servidor/servidor-fixtures.js';
