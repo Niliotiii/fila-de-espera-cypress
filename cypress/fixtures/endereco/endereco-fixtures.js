@@ -4,7 +4,7 @@ export const enderecoFixtures = (gerarLocalizacao = false) => {
   if (gerarLocalizacao) {
     return {
       cep: faker.address.zipCode('#####-###'),
-      numero: faker.random.number(),
+      numero: faker.random.number(4),
       bairro: faker.address.county(),
       complemento: faker.address.direction(),
       logradouro: faker.address.streetName(),
