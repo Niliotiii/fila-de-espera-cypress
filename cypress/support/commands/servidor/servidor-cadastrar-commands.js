@@ -57,8 +57,8 @@ Cypress.Commands.add('TelasCadastrosServidor', (values) => {
       cy.get('#instituicaoId-form-item').click();
       cy.get('[placeholder="Pesquise uma secretaria.."]')
         .clear()
-        .type(values.secretariaEducacao);
-      cy.contains(values.secretariaEducacao).click();
+        .type(values.lotacaoVinculada);
+      cy.contains(values.lotacaoVinculada).click();
     } else {
       cy.log('Seletor "Selecione uma Unidade Escolar" NÃO encontrada');
       if (
@@ -68,8 +68,8 @@ Cypress.Commands.add('TelasCadastrosServidor', (values) => {
         cy.get('#instituicaoId-form-item').click();
         cy.get('[placeholder="Pesquise uma unidade escolar"]')
           .clear()
-          .type(values.unidadeEscolar);
-        cy.contains(values.unidadeEscolar).click();
+          .type(values.lotacaoVinculada);
+        cy.contains(values.lotacaoVinculada).click();
       } else {
         cy.log('Seletor "Selecione uma Unidade Escolar" NÃO encontrada');
       }

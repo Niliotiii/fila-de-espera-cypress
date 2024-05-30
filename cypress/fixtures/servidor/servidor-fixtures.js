@@ -4,8 +4,7 @@ const faker = require('faker-br');
 
 export const servidorFixtures = {
   // Identificação
-  secretariaEducacao: 'SEMED Ji-Paraná',
-  unidadeEscolar: 'IFRO - CAMPUS JI-PARANA',
+  lotacaoVinculada: 'SEMED Ji-Paraná',
   nome: faker.name.findName(),
   cpf: faker.br.cpf({ format: true }),
   rg: faker.br.rg(),
@@ -26,6 +25,7 @@ export const servidorFixtures = {
   municipioNascimento: 'Porto Velho',
   nivelEscolaridade: 'Doutorado',
   // Usuário
+  tipoVinculo: 'Secretaria Municipal',
   nivelAcesso: 'Administrador Municipal',
   cargo: 'Gestor da Central de Vagas',
   situacaoCadastral: 'Ativa',
