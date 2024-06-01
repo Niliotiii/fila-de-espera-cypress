@@ -24,7 +24,11 @@ import './commands/servidor/servidor-deletar-commands.js';
 import './commands/servidor/servidor-editar-commands.js';
 import './commands/servidor/servidor-visualizar-commands.js';
 import './commands/turma/turma-commands.js';
-import './commands/unidade-escolar/unidade-escolar-commands.js';
+import './commands/unidade-escolar/unidade-escolar-cadastrar-commands.js';
+import './commands/unidade-escolar/unidade-escolar-consultar-commands.js';
+import './commands/unidade-escolar/unidade-escolar-deletar-commands.js';
+import './commands/unidade-escolar/unidade-escolar-editar-commands.js';
+import './commands/unidade-escolar/unidade-escolar-visualizar-commands.js';
 import './commands/utils/index.js';
 import './commands/vaga/vaga-commands.js';
 

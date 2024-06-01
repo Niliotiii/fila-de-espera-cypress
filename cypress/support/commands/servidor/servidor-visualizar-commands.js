@@ -31,7 +31,7 @@ Cypress.Commands.add('TelasConsultasServidorVisualizar', (values) => {
   // Usuário
   cy.contains(values.cargo).should('exist');
   cy.contains(values.nivelAcesso).should('exist');
-  //   cy.contains(values.situacaoCadastral).should('exist');
+  // cy.contains(values.situacaoCadastral).should('exist');
   cy.contains(formatCPF(values.cpf)).should('exist');
   // cy.contains(values.tipoVinculo).should('exist');
   // cy.contains(values.lotacaoVinculada).should('exist');

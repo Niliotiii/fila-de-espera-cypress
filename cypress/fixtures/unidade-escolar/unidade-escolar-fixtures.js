@@ -27,9 +27,9 @@ export const unidadeEscolarFixtures = {
   codigoInep: Math.floor(Math.random() * 10000),
   dependenciaAdministrativa: 'Privada',
   convenioPublico: 'Não tem convênio',
-  secretariaEducacao: 'SEMED Ji-Paraná',
+  secretariaEducacao: 'Secretária Municipal de Educação Ji-Paraná',
   // Endereço
-  endereco: endereco(),
+  endereco: endereco(true),
   // Contato
   contato: contato,
 };
