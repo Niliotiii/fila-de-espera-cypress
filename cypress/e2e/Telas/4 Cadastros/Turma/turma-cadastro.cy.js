@@ -4,8 +4,8 @@ describe('INICIANDO TESTE', () => {
   it('FAZENDO: Login', () => {
     cy.commands('auth.Login', 'ADMINISTRADOR');
   });
-  it('SELECIONANDO: Contexto de Secretaria de Educação', () => {
-    cy.commands('context.secretaria-educacao', turma?.secretariaEducacao);
+  it('SELECIONANDO: Contexto', () => {
+    cy.commands('context');
   });
   it('ACESSANDO: Cadastrar Turmas', () => {
     cy.visit('/dashboard/cadastro/turma');
