@@ -5,7 +5,7 @@ describe('INICIANDO TESTE', () => {
     cy.commands('auth.Login', 'ADMINISTRADOR');
   });
 
-  it('SELECIONANDO: Contexto de Secretaria de Educação', () => {
+  it('SELECIONANDO: Contexto', () => {
     cy.commands('context-sem-unidade-escolar');
   });
 

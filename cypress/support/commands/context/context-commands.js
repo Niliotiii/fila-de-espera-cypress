@@ -9,7 +9,7 @@ const testeSecretariaEducacao = () => {
   cy.get('[placeholder="Pesquise uma secretaria.."]').type(
     context.secretariaEducacao,
   );
-  cy.wait(1000);
+  cy.wait(1500);
   cy.get(
     '[class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-all duration-200 aria-selected:bg-primary aria-selected:text-primary-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 cursor-pointer"]',
   ).click();

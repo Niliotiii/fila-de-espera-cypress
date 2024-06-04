@@ -1,6 +1,8 @@
 import 'cypress-file-upload';
+import './commands/configurar-agendamento';
+import './commands/gerenciar-criterios';
+
 import './commands/agendamento/agendamento-commands.js';
-import './commands/agendamento/configurar-agendamento-commands.js';
 import './commands/auth/auth-login-commands.js';
 import './commands/contato/contato-commands.js';
 import './commands/context/context-commands.js';
@@ -11,7 +13,6 @@ import './commands/crianca/crianca-editar-commands.js';
 import './commands/crianca/crianca-visualizar-commands.js';
 import './commands/endereco/endereco-commands.js';
 import './commands/entrevista/entrevista-commands.js';
-import './commands/gerenciar-criterios/gerenciar-criterios-commands.js';
 import './commands/reserva/reserva-commands.js';
 import './commands/secretaria-educacao/secretaria-educacao-cadastrar-commands.js';
 import './commands/secretaria-educacao/secretaria-educacao-consultar-commands.js';
@@ -37,7 +38,6 @@ Cypress.Commands.add('commands', (key, params) => {
     .split('.')
     .map((item) => item.charAt(0).toUpperCase() + item.slice(1))
     .join('');
-
   if (params) {
     return cy[command](params);
   } else {
