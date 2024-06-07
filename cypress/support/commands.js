@@ -35,7 +35,10 @@ import './commands/unidade-escolar/unidade-escolar-deletar-commands.js';
 import './commands/unidade-escolar/unidade-escolar-editar-commands.js';
 import './commands/unidade-escolar/unidade-escolar-visualizar-commands.js';
 import './commands/utils/index.js';
-import './commands/vaga/vaga-commands.js';
+import './commands/vaga/vaga-cadastrar-commands.js';
+import './commands/vaga/vaga-consultar-commands.js';
+import './commands/vaga/vaga-deletar-commands.js';
+import './commands/vaga/vaga-visualizar-commands.js';
 
 Cypress.Commands.add('commands', (key, params) => {
   const command = key
