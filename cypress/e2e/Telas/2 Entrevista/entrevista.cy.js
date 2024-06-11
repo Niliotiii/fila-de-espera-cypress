@@ -1,10 +1,10 @@
 import { entrevistaFixtures as entrevista } from '../../../fixtures';
 
 describe('INICIANDO TESTE', () => {
-  it.only('FAZENDO: Login', () => {
+  it('FAZENDO: Login', () => {
     cy.commands('auth.Login', 'ADMINISTRADOR');
   });
-  it.only('SELECIONANDO: Contexto', () => {
+  it('SELECIONANDO: Contexto', () => {
     cy.commands('context-sem-unidade-escolar');
   });
   it('ACESSANDO: Entrevistar Candidato', () => {
@@ -14,19 +14,19 @@ describe('INICIANDO TESTE', () => {
   it('CADASTRANDO: Entrevista', () => {
     cy.commands('telas.entrevista.cadastrar', entrevista);
   });
-  it.only('CONSULTANDO: Entrevista', () => {
+  it('CONSULTANDO: Entrevista', () => {
     cy.commands('telas.entrevista.consultar');
   });
-  it.only('VISUALIZANDO: Entrevista', () => {
+  it('VISUALIZANDO: Entrevista', () => {
     cy.commands('telas.entrevista.visualizar');
   });
-  it.only('EDITANDO: Entrevista', () => {
-    cy.commands('telas.entrevista.editar');
+  it('EDITANDO: Entrevista', () => {
+    cy.commands('telas.entrevista.editar', entrevista);
   });
-  it.only('CONSULTANDO: Entrevista', () => {
+  it('CONSULTANDO: Entrevista', () => {
     cy.commands('telas.entrevista.consultar');
   });
-  it.only('VISUALIZANDO: Entrevista', () => {
+  it('VISUALIZANDO: Entrevista', () => {
     cy.commands('telas.entrevista.visualizar');
   });
 });
