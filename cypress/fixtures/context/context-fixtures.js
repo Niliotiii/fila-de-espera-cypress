@@ -1,12 +1,12 @@
 const faker = require('faker-br');
 
 export const contextFixtures = {
-  secretariaEducacao: 'Secretaria Teste Barros',
-  secretariaEducacaoRazaoSocial: 'Secretaria Teste Batista',
-  unidadeEscolar: 'EMEIEF PAULO FREIRE 1',
+  secretariaEducacao: 'SEMED Ji-Paraná',
+  secretariaEducacaoRazaoSocial: 'SEMED Ji-Paraná',
+  unidadeEscolar: 'IFRO - CAMPUS JI-PARANA',
   cpfCrianca: '144.369.754-01',
   nomeCrianca: 'Ana Maria', // `Criança Teste ${faker.random.number()}`
-  etapa: 'Berçário – menores de 2 anos',
+  etapa: 'Maternal I – 2 anos a 2 anos e 11 meses',
   turno: 'Vespertino',
   nomeTurma: `Turma Teste ${faker.random.number()}`,
 };

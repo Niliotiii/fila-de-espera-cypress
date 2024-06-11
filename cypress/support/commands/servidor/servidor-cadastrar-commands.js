@@ -42,10 +42,18 @@ Cypress.Commands.add('TelasCadastrosServidor', (values) => {
   cy.get('button').contains('Próximo').click();
 
   cy.log('GUIA: Vínculo ao usuário');
-  cy.get('#usuario\\.nivelAcesso > select').select(values.nivelAcesso, {
-    force: true,
-  });
-  cy.get('#cargo > select').select(values.cargo, { force: true });
+  if (values.perfil !== 'GESTOR DE CRECHE') {
+    cy.get('#usuario\\.nivelAcesso > select').select(values.nivelAcesso, {
+      force: true,
+    });
+    cy.get('#cargo > select').select(values.cargo, { force: true });
+  } else {
+    cy.get('#usuario\\.nivelAcesso').click();
+    cy.get('body').type('{enter}');
+    cy.get('#cargo').click();
+    cy.get('body').type('{enter}');
+  }
+
   cy.get('#usuario\\.situacaoCadastral > select').select(
     values.situacaoCadastral,
     { force: true },
