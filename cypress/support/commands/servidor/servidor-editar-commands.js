@@ -7,9 +7,9 @@ Cypress.Commands.add('TelasConsultasServidorEditar', (values) => {
     });
 
   values.nome = 'Servidor Editado';
-  values.contato.email = 'emaileditato@gmail.com';
-  values.nivelAcesso = 'Atendente Secretaria';
-  values.cargo = 'Atendente';
+  values.contato.email = 'emaileditado@gmail.com';
+  values.nivelAcesso = 'Gestor de Creche';
+  values.cargo = 'Analista em Educação';
 
   cy.log('GUIA: Identificação');
   cy.get('#pessoa\\.nome-form-item').clear().type(values.nome);

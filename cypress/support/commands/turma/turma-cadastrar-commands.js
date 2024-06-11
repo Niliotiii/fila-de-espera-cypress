@@ -2,11 +2,13 @@ Cypress.Commands.add('TelasCadastrosTurma', (values) => {
   cy.log('PREENCHENDO: Guia do formulário');
 
   cy.log('GUIA: Informações Gerais');
-  cy.get('#escola-form-item').click();
-  cy.get('[placeholder="Pesquise uma unidade escolar"]')
-    .clear()
-    .type(values?.unidadeEscolar);
-  cy.contains(values?.unidadeEscolar).click();
+  if (values.perfil !== 'GESTOR DE CRECHE') {
+    cy.get('#escola-form-item').click();
+    cy.get('[placeholder="Pesquise uma unidade escolar"]')
+      .clear()
+      .type(values?.unidadeEscolar);
+    cy.contains(values?.unidadeEscolar).click();
+  }
   cy.get('#etapa > select').select(values.etapa, { force: true });
   cy.get('#nome-form-item').clear().type(values.nome);
   cy.get('#turno > select').select(values.turno, { force: true });
