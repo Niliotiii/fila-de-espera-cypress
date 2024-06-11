@@ -1,4 +1,4 @@
-Cypress.Commands.add('TelasReserva', (values) => {
+Cypress.Commands.add('TelasReservaCadastrar', (values) => {
   cy.log('PREENCHENDO: Filtro de busca');
   cy.selectVerification('#etapa > select', '#etapa-form-item', values?.etapa);
   cy.selectVerification('#turno > select', '#turno-form-item', values?.turno);

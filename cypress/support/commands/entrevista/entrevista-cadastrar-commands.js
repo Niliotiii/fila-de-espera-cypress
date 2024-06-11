@@ -1,4 +1,4 @@
-Cypress.Commands.add('TelasEntrevista', (values) => {
+Cypress.Commands.add('TelasEntrevistaCadastrar', (values) => {
   cy.log('PREENCHENDO: Guias do formulário');
 
   cy.log('GUIA: Identificação');

@@ -1,0 +1,1 @@
+import './entrevista-search-item';

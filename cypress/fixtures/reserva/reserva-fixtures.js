@@ -1,6 +1,7 @@
 import { contextFixtures as context } from '../context/context-fixtures';
 
 export const reservaFixtures = {
+  secretariaEducacao: context.secretariaEducacao,
   unidadeEscolar: context.unidadeEscolar,
   turno: context.turno,
   etapa: context.etapa,

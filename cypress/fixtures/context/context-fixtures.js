@@ -1,12 +1,11 @@
-const faker = require('faker-br');
-
 export const contextFixtures = {
   secretariaEducacao: 'SEMED Ji-Paraná',
   secretariaEducacaoRazaoSocial: 'SEMED Ji-Paraná',
-  unidadeEscolar: 'IFRO - CAMPUS JI-PARANA',
-  cpfCrianca: '144.369.754-01',
-  nomeCrianca: 'Ana Maria', // `Criança Teste ${faker.random.number()}`
-  etapa: 'Maternal I – 2 anos a 2 anos e 11 meses',
+  unidadeEscolar: 'EMEIEF PAULO FREIRE 1',
+  cpfCrianca: '227.580.532-09',
+  cpfResponsavel: '918.901.306-99',
+  nomeCrianca: 'Cláudio Geraldo Benjamin Peixoto', // `Criança Teste ${faker.random.number()}`
+  etapa: 'Berçário – menores de 2 anos',
   turno: 'Vespertino',
-  nomeTurma: `Turma Teste ${faker.random.number()}`,
+  nomeTurma: `Maternal I B`, // Turma Teste ${faker.random.number()}
 };

@@ -12,6 +12,15 @@ describe('INICIANDO TESTE', () => {
     cy.visit('/dashboard/fila-de-espera');
   });
   it('CADASTRANDO: Reserva', () => {
-    cy.commands('telas.reserva', reserva);
+    cy.commands('telas.reserva.cadastrar', reserva);
+  });
+  it('CONSULTANDO: Reserva', () => {
+    cy.commands('telas.reserva.consultar', reserva);
+  });
+  it('VISUALIZANDO: Reserva', () => {
+    cy.commands('telas.reserva.visualizar', reserva);
+  });
+  it('DELETAR: Reserva', () => {
+    cy.commands('telas.reserva.deletar', reserva);
   });
 });
