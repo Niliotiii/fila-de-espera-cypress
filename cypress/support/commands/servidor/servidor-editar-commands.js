@@ -22,10 +22,9 @@ Cypress.Commands.add('TelasConsultasServidorEditar', (values) => {
     cy.get('[placeholder="Pesquise uma secretaria.."]')
       .clear()
       .type(values.lotacaoVinculada);
-    cy.wait(1000);
+
     cy.contains(values.lotacaoVinculada).click();
-    // cy.get('#instituicaoId-form-item').click();
-    // cy.wait(1000);
+    cy.get('body').type('{esc}');
     cy.get('button').contains('Salvar').click();
     cy.contains('Servidor editado com sucesso').should('exist');
   } else {

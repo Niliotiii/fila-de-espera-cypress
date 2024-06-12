@@ -7,7 +7,7 @@ describe('INICIANDO TESTE', () => {
   it('SELECIONANDO: Contexto', () => {
     cy.commands('context-sem-unidade-escolar');
   });
-  it('ACESSANDO: Entrevistar Candidato', () => {
+  it.only('ACESSANDO: Entrevistar Candidato', () => {
     cy.wait(500);
     cy.visit('/dashboard/entervista/entrevistar-candidato');
   });

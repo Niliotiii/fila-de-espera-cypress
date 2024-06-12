@@ -2,6 +2,7 @@ import 'cypress-file-upload';
 import './commands/configurar-agendamento';
 import './commands/entrevista';
 import './commands/gerenciar-criterios';
+import './commands/perfil';
 import './commands/reserva';
 
 import './commands/auth/auth-login-commands.js';

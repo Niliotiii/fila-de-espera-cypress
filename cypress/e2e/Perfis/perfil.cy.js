@@ -1,8 +1,11 @@
 import {
   configurarAgendamentoFixtures as configuracaoAgendamento,
+  criancaFixtures as crianca,
+  entrevistaFixtures as entrevista,
   unidadeEscolarFixtures as escola,
   gerenciarCriteriosFixtures as gerenciarCriterios,
   secretariaEducacaoFixtures as secretaria,
+  servidorFixtures as servidor,
   turmaFixtures as turma,
   vagaFixtures as vaga,
 } from '../../fixtures';
@@ -28,79 +31,21 @@ const administradorMunicipal = {
 
 describe('PERFIL: Gestor de Creche', () => {
   // Login como ADMINISTRADOR
-  it('FAZENDO: Login como ADMINISTRADOR', () => {
+  it.only('FAZENDO: LOGIN (ADMINISTRADOR)', () => {
     cy.commands('auth.Login', 'ADMINISTRADOR');
   });
 
-  //
-
-  // Fluxo de Servidor - Cadastrar, Consultar, Visualizar, Editar, Deletar
-  it('ACESSANDO: Cadastrar Servidores', () => {
-    cy.visit('/dashboard/cadastro/servidor');
-  });
-  it('CADASTRANDO: Servidor', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).contains('Cadastrar Servidores');
-    cy.commands('telas.cadastros.servidor', servidor);
-  });
-  it('CONSULTANDO: Servidor', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).contains('Consultar Servidores');
-    cy.commands('telas.consultas.servidor', servidor);
-  });
-  it('VISUALIZANDO: Servidor', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).contains('Consultar Servidores');
-    cy.commands('telas.consultas.servidor.visualizar', servidor);
-  });
-  it('CONSULTANDO: Servidor', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).contains('Consultar Servidores');
-    cy.commands('telas.consultas.servidor', servidor);
-  });
-  it('EDITANDO: Servidor', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).contains('Consultar Servidores');
-    cy.commands('telas.consultas.servidor.editar', servidor);
-  });
-  // Apartir desse ponto servidor já foi alterado
-  it('CONSULTANDO: Servidor', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).contains('Consultar Servidores');
-    cy.commands('telas.consultas.servidor', servidor);
-  });
-  it('VISUALIZANDO: Servidor', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).contains('Consultar Servidores');
-    cy.commands('telas.consultas.servidor.visualizar', servidor);
-  });
-  it('CONSULTANDO: Servidor', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).contains('Consultar Servidores');
-    cy.commands('telas.consultas.servidor', servidor);
-  });
-  it('DELETANDO: Servidor', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).contains('Consultar Servidores');
-    cy.commands('telas.consultas.servidor.deletar', servidor);
+  it.only('FLUXO: SERVIDOR (ADMINISTRADOR) ', () => {
+    cy.commands('perfil.servidor', servidor);
   });
 
   //
 
   // Fluxo de Secretaria de Educação - Cadastrar, Consultar, Visualizar, Editar
-  it('ACESSANDO: Cadastrar Secretaria de Educação', () => {
+  it.only('ACESSANDO: Cadastrar Secretaria de Educação', () => {
     cy.visit('/dashboard/cadastro/secretaria');
   });
-  it('CADASTRANDO: Secretaria de Educação', () => {
+  it.only('CADASTRANDO: Secretaria de Educação', () => {
     cy.get(
       'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
     ).contains('Cadastrar Secretaria de Educação');
@@ -147,16 +92,17 @@ describe('PERFIL: Gestor de Creche', () => {
   //
 
   // Alterar o perfil AUX para ADMINISTRADOR MUNICIPAL
-  it('ACESSANDO: Consultar Servidores', () => {
+  it.only('ACESSANDO: Consultar Servidores', () => {
     cy.visit('/dashboard/consulta/servidor');
   });
-  it('CONSULTANDO: Servidor', () => {
+  it.only('CONSULTANDO: Servidor', () => {
     cy.get(
       'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
     ).contains('Consultar Servidores');
     cy.commands('telas.consultas.servidor', administradorMunicipal);
   });
-  it('EDITANDO: Servidor', () => {
+
+  it.only('EDITANDO: Servidor', () => {
     cy.get(
       'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
     ).contains('Consultar Servidores');
@@ -166,7 +112,7 @@ describe('PERFIL: Gestor de Creche', () => {
   //
 
   // Login como ADMINISTRADOR MUNICIPAL usando o perfil AUX
-  it('FAZENDO: Login como ADMINISTRADOR MUNICIPAL', () => {
+  it.only('FAZENDO: Login como ADMINISTRADOR MUNICIPAL', () => {
     cy.commands('auth.Login', 'AUX');
   });
 
@@ -441,4 +387,12 @@ describe('PERFIL: Gestor de Creche', () => {
   //     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
   //   ).should('contain', 'Fila de Espera');
   // });
+
+  // --------------------------------------------------------
+  it.only('FLUXO: CRIANÇA (ATENDENTE SECRETARIA)', () => {
+    cy.commands('perfil.crianca', crianca);
+  });
+  it.only('FLUXO: ENTREVISTA (ATENDENTE )', () => {
+    cy.commands('perfil.entrevista', entrevista);
+  });
 });
