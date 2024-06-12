@@ -2,13 +2,16 @@ import { contextFixtures as context } from '../context/context-fixtures';
 
 const faker = require('faker-br');
 
-const nome = faker.name.findName('Secretaria Teste');
-
 export const entrevistaFixtures = {
   // Identificação
   cpfCrianca: context.cpfCrianca,
   // Entrvistador
   tipoResponsavel: 'PRIMEIRA OPÇÃO',
+  nomeResponsavel: '',
+  cpfResponsavel: '',
+  dataNascimentoResponsavel: '',
+  sexoResponsavel: '',
+  estadoCivilResponsavel: '',
   // Unidade Preferência
   etapa: 'Berçário - menor que 2 anos',
   turno: 'Matutino',
