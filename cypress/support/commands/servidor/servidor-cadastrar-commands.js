@@ -42,7 +42,7 @@ Cypress.Commands.add('TelasCadastrosServidor', (values) => {
   cy.get('button').contains('Próximo').click();
 
   cy.log('GUIA: Vínculo ao usuário');
-  if (values.perfil !== 'GESTOR DE CRECHE') {
+  if (!values.perfil) {
     cy.get('#usuario\\.nivelAcesso > select').select(values.nivelAcesso, {
       force: true,
     });

@@ -9,7 +9,7 @@ Cypress.Commands.add('AuthLogin', (perfil) => {
         password = 'Wall1!2@3#yson';
       }
       break;
-    case 'GESTOR DE CRECHE':
+    case 'AUX':
       {
         username = 'aaa';
         password = 'bbb';

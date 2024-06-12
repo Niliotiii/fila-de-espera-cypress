@@ -2,7 +2,7 @@ Cypress.Commands.add('TelasCadastrosTurma', (values) => {
   cy.log('PREENCHENDO: Guia do formulário');
 
   cy.log('GUIA: Informações Gerais');
-  if (values.perfil !== 'GESTOR DE CRECHE') {
+  if (!values.perfil) {
     cy.get('#escola-form-item').click();
     cy.get('[placeholder="Pesquise uma unidade escolar"]')
       .clear()

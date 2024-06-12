@@ -5,7 +5,7 @@ Cypress.Commands.add('TelasConfigurar-agendamentoConsultar', (values) => {
   const colunas = [
     {
       nomeColuna: 'Secretaria de Educação',
-      valorColuna: values.secretariaEducacao,
+      valorColuna: values.secretariaEducacaoRazaoSocial,
     },
     { nomeColuna: 'Intervalo', valorColuna: values.intervaloEntrevista },
     {

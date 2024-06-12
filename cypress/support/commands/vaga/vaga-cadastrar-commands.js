@@ -13,7 +13,7 @@ Cypress.Commands.add('TelasCadastrosVaga', (values) => {
       values.servidor = valor;
     });
   cy.get('#anoLetivo > select').select(values.anoLetivo, { force: true });
-  // if (values.perfil !== 'GESTOR DE CRECHE') {
+  // if (!values.perfil) {
   //  cy.get('#escola-form-item').click();
   //  cy.get('[placeholder="Pesquise uma unidade escolar"]')
   //    .clear()
