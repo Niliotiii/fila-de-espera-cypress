@@ -1,4 +1,4 @@
-Cypress.Commands.add('ConsultaPortalAgendamentoDeletar', (values) => {
+Cypress.Commands.add('ConsultaPortal-agendamentoDeletar', (values) => {
   // Clique em Cancelar
   cy.log('CLICANDO: No Ícone de Lixeira');
   cy.get('table tbody tr td:nth-child(5) div div button').click();

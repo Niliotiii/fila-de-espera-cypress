@@ -44,10 +44,4 @@ Cypress.Commands.add('PerfilCrianca', (crianca) => {
     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
   ).contains('Consultar Crianças');
   cy.commands('telas.consultas.crianca.visualizar', crianca);
-
-  cy.log('CONSULTANDO: Criança');
-  cy.get(
-    'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-  ).contains('Consultar Crianças');
-  cy.commands('telas.consultas.crianca', crianca);
 });

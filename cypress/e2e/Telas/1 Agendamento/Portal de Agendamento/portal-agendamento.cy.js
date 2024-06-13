@@ -17,7 +17,7 @@ describe('INICIANDO TESTE', () => {
       'contain',
       'Realizar Agendamento',
     );
-    cy.commands('cadastro.portal.agendamento', crianca);
+    cy.commands('cadastro.portal-agendamento', crianca);
   });
 
   it('ACESSANDO: Consultar Agendamento', () => {
@@ -29,7 +29,7 @@ describe('INICIANDO TESTE', () => {
       'contain',
       'Consultar Agendamento',
     );
-    cy.commands('consulta.portal.agendamento', crianca);
+    cy.commands('consulta.portal-agendamento', crianca);
   });
 
   it('DELETANDO: Agendamento', () => {
@@ -37,6 +37,6 @@ describe('INICIANDO TESTE', () => {
       'contain',
       'Consultar Agendamento',
     );
-    cy.commands('consulta.portal.agendamento.deletar', crianca);
+    cy.commands('consulta.portal-agendamento.deletar', crianca);
   });
 });

@@ -1,7 +1,6 @@
 import {
   configurarAgendamentoFixtures as configuracaoAgendamento,
   criancaFixtures as crianca,
-  entrevistaFixtures as entrevista,
   unidadeEscolarFixtures as escola,
   gerenciarCriteriosFixtures as gerenciarCriterios,
   secretariaEducacaoFixtures as secretaria,
@@ -12,12 +11,17 @@ import {
 
 turma.perfil = true;
 vaga.perfil = true;
+crianca.perfil = true;
 
 configuracaoAgendamento.secretariaEducacao = secretaria.nomeFantasia;
 configuracaoAgendamento.secretariaEducacaoRazaoSocial =
   'Secretaria de Educação Editada';
 escola.secretariaEducacao = 'Secretaria de Educação Editada';
 vaga.turma = `Turma Editada - ${turma.etapa} - ${turma.turno}`;
+crianca.agendamento = {
+  municipio: secretaria.endereco.cidade,
+  localAtendimento: secretaria.razaoSocial,
+};
 
 const administradorMunicipal = {
   perfil: true,
@@ -35,58 +39,14 @@ describe('PERFIL: Gestor de Creche', () => {
     cy.commands('auth.Login', 'ADMINISTRADOR');
   });
 
+  //
+
   it.only('FLUXO: SERVIDOR (ADMINISTRADOR) ', () => {
     cy.commands('perfil.servidor', servidor);
   });
 
-  //
-
-  // Fluxo de Secretaria de Educação - Cadastrar, Consultar, Visualizar, Editar
-  it.only('ACESSANDO: Cadastrar Secretaria de Educação', () => {
-    cy.visit('/dashboard/cadastro/secretaria');
-  });
-  it.only('CADASTRANDO: Secretaria de Educação', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).contains('Cadastrar Secretaria de Educação');
-    cy.commands('telas.cadastros.secretaria-educacao', secretaria);
-  });
-  it('CONSULTANDO: Secretaria de Educação', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).contains('Consultar Secretarias de Educação');
-    cy.commands('telas.consultas.secretaria-educacao', secretaria);
-  });
-  it('VISUALIZANDO: Secretaria de Educação', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).contains('Consultar Secretarias de Educação');
-    cy.commands('telas.consultas.secretaria-educacao.visualizar', secretaria);
-  });
-  it('CONSULTANDO: Secretaria de Educação', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).contains('Consultar Secretarias de Educação');
-    cy.commands('telas.consultas.secretaria-educacao', secretaria);
-  });
-  it('EDITANDO: Secretaria de Educação', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).contains('Consultar Secretarias de Educação');
-    cy.commands('telas.consultas.secretaria-educacao.editar', secretaria);
-  });
-  // Apartir desse ponto secretaria já foi alterado
-  it('CONSULTANDO: Secretaria de Educação', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).contains('Consultar Secretarias de Educação');
-    cy.commands('telas.consultas.secretaria-educacao', secretaria);
-  });
-  it('VISUALIZANDO: Secretaria de Educação', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).contains('Consultar Secretarias de Educação');
-    cy.commands('telas.consultas.secretaria-educacao.visualizar', secretaria);
+  it.only('FLUXO: SECRETARIA EDUCAÇÃO (ADMINISTRADOR) ', () => {
+    cy.commands('perfil.secretaria-educacao', secretaria);
   });
 
   //
@@ -101,7 +61,6 @@ describe('PERFIL: Gestor de Creche', () => {
     ).contains('Consultar Servidores');
     cy.commands('telas.consultas.servidor', administradorMunicipal);
   });
-
   it.only('EDITANDO: Servidor', () => {
     cy.get(
       'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
@@ -118,139 +77,23 @@ describe('PERFIL: Gestor de Creche', () => {
 
   //
 
-  // Fluxo de Configurar Agenda - Cadastrar, Consultar, Visualizar, Editar
-  it('CADASTRANDO: Gerenciar Agendamento', () => {
-    cy.visit('/dashboard/agendamento/gerenciar-agendamentos');
-    cy.commands(
-      'telas.configurar-agendamento.cadastrar',
-      configuracaoAgendamento,
-    );
+  it.only('FLUXO: CONFIGURAR AGENDAMENTO (ADMINISTRADOR MUNICIPAL) ', () => {
+    cy.commands('perfil.configurar-agendamento', configuracaoAgendamento);
   });
-  it('CONSULTANDO: Gerenciar Agendamentos', () => {
-    cy.commands(
-      'telas.configurar-agendamento.consultar',
-      configuracaoAgendamento,
-    );
+
+  it.only('FLUXO: GERENCIAR CRITÉRIOS (ADMINISTRADOR MUNICIPAL) ', () => {
+    cy.commands('perfil.gerenciar-criterios', gerenciarCriterios);
   });
-  it('VISUALIZANDO: Gerenciar Agendamentos', () => {
-    cy.commands(
-      'telas.configurar-agendamento.visualizar',
-      configuracaoAgendamento,
-    );
-  });
-  it('EDITANDO: Gerenciar Agendamentos', () => {
-    cy.commands('telas.configurar-agendamento.editar', configuracaoAgendamento);
-  });
-  it('CONSULTANDO: Gerenciar Agendamentos', () => {
-    cy.commands(
-      'telas.configurar-agendamento.consultar',
-      configuracaoAgendamento,
-    );
-  });
-  it('VISUALIZANDO: Gerenciar Agendamentos', () => {
-    cy.commands(
-      'telas.configurar-agendamento.visualizar',
-      configuracaoAgendamento,
-    );
+
+  it.only('FLUXO: UNIDADE ESCOLAR (ADMINISTRADOR MUNICIPAL) ', () => {
+    cy.commands('perfil.unidade-escolar', escola);
   });
 
   //
 
-  // Fluxo de Gerenciar Critérios - Cadastrar, Consultar, Visualizar, Editar
-  it('ACESSANDO: Gerenciar Critérios', () => {
-    cy.visit('/dashboard/criterios/gerenciar-criterios');
+  it.only('FLUXO: PORTAL AGENDAMENTO ', () => {
+    cy.commands('perfil.portal-agendamento', crianca);
   });
-  gerenciarCriterios?.criterios.forEach((criterio, index) => {
-    it(`CADASTRANDO: ${index + 1}° Critério`, () => {
-      cy.commands('telas.gerenciar-criterios.cadastrar', criterio);
-    });
-  });
-  gerenciarCriterios?.criterios.forEach((criterio, index) => {
-    it(`CONSULTANDO: ${index + 1}° Critério`, () => {
-      cy.commands('telas.gerenciar-criterios.consultar', criterio);
-    });
-  });
-  it(`VISUALIZANDO: Todos os Critérios`, () => {
-    cy.commands('telas.gerenciar-criterios.visualizar');
-  });
-  it(`EDITANDO: Todos os Critérios`, () => {
-    cy.commands('telas.gerenciar-criterios.editar');
-  });
-
-  //
-
-  // Fluxo de Unidade Escolar - Cadastrar, Consultar, Visualizar, Editar
-  it('ACESSANDO: Cadastrar Secretaria de Educação', () => {
-    cy.visit('/dashboard/cadastro/unidade-escolar');
-  });
-  it('CADASTRANDO: Unidade Escolar', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).should('contain', 'Cadastrar Unidade Escolar');
-    cy.commands('telas.cadastros.unidade-escolar', escola);
-  });
-  it('CONSULTANDO: Unidade Escolar', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).should('contain', 'Consultar Unidades Escolares');
-    cy.commands('telas.consultas.unidade-escolar', escola);
-  });
-  it('VISUALIZANDO: Unidade Escolar', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).should('contain', 'Consultar Unidades Escolares');
-    cy.commands('telas.consultas.unidade-escolar.visualizar', escola);
-  });
-  it('CONSULTANDO: Unidade Escolar', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).should('contain', 'Consultar Unidades Escolares');
-    cy.commands('telas.consultas.unidade-escolar', escola);
-  });
-  it('EDITANDO: Unidade Escolar', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).should('contain', 'Consultar Unidades Escolares');
-    cy.commands('telas.consultas.unidade-escolar.editar', escola);
-  });
-  // Apartir desse ponto escola já foi alterado
-  it('CONSULTANDO: Unidade Escolar', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).should('contain', 'Consultar Unidades Escolares');
-    cy.commands('telas.consultas.unidade-escolar', escola);
-  });
-  it('VISUALIZANDO: Unidade Escolar', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).should('contain', 'Consultar Unidades Escolares');
-    cy.commands('telas.consultas.unidade-escolar.visualizar', escola);
-  });
-
-  // // Fluxo de Portal de Agendamento - Cadastrar, Consultar
-  // it('ACESSANDO: Realizar Agendamento', () => {
-  //   cy.visit('/agendamento/agendar');
-  // });
-
-  // it('CADASTRANDO: Agendamento', () => {
-  //   cy.get('.h-24 > .flex > .text-lg').should(
-  //     'contain',
-  //     'Realizar Agendamento',
-  //   );
-  //   cy.commands('cadastro.portal.agendamento', crianca);
-  // });
-
-  // it('ACESSANDO: Consultar Agendamento', () => {
-  //   cy.visit('/agendamento/consultar');
-  // });
-
-  // it('CONSULTANDO: Agendamento', () => {
-  //   cy.get('.h-24 > .flex > .text-lg').should(
-  //     'contain',
-  //     'Consultar Agendamento',
-  //   );
-  //   cy.commands('consulta.portal.agendamento', crianca);
-  // });
 
   // //
   // //

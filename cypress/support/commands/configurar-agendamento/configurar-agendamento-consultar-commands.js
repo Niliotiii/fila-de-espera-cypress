@@ -5,7 +5,7 @@ Cypress.Commands.add('TelasConfigurar-agendamentoConsultar', (values) => {
   const colunas = [
     {
       nomeColuna: 'Secretaria de Educação',
-      valorColuna: values.secretariaEducacaoRazaoSocial,
+      valorColuna: values.secretariaEducacao,
     },
     { nomeColuna: 'Intervalo', valorColuna: values.intervaloEntrevista },
     {
@@ -27,7 +27,7 @@ Cypress.Commands.add('TelasConfigurar-agendamentoConsultar', (values) => {
     cy.log(`PESQUISA: Por ${coluna.nomeColuna}`);
     cy.get(childrenSelector).type(coluna.valorColuna);
     cy.wait(1000);
-    cy.contains(values.secretariaEducacaoRazaoSocial).should('exist');
+    cy.contains(values.secretariaEducacao).should('exist');
     cy.get(childrenSelector).clear();
   });
 });
