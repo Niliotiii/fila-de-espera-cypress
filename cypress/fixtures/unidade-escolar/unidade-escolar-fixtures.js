@@ -2,14 +2,14 @@ import {
   contatoFixtures as contato,
   enderecoFixtures as endereco,
 } from '../../fixtures';
+import { contextFixtures as context } from '../context/context-fixtures';
 
 const faker = require('faker-br');
-const nome = faker.name.findName('Escola Teste');
 
 export const unidadeEscolarFixtures = {
   // Identificação
-  razaoSocial: nome,
-  nomeFantasia: nome,
+  razaoSocial: context.unidadeEscolar,
+  nomeFantasia: context.unidadeEscolar,
   tipo: 'Creche',
   cnpj: faker.br.cnpj({ format: true }),
   dataCriacao: new Date(

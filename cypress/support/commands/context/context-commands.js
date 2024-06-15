@@ -18,6 +18,17 @@ const testeSecretariaEducacao = () => {
   ).click({ force: true });
 };
 
+Cypress.Commands.add('ContextEscola', () => {
+  cy.log('Selecionando Unidade Escolar');
+  cy.visit('/dashboard/fila-de-espera');
+  cy.get('#escola-form-item').click();
+  cy.get('[placeholder="Pesquise uma unidade escolar"]').type(
+    context.unidadeEscolar,
+  );
+  cy.wait(1000);
+  cy.get('body').type('{enter}');
+});
+
 Cypress.Commands.add('Context', () => {
   testeSecretariaEducacao();
 

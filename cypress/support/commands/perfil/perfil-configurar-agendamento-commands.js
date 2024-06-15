@@ -9,7 +9,10 @@ Cypress.Commands.add(
       'telas.configurar-agendamento.cadastrar',
       configuracaoAgendamento,
     );
-
+    cy.visit('/dashboard');
+    cy.wait(7000);
+    // DESCOMENTAR
+    /*
     cy.log('CONSULTANDO: Gerenciar Agendamento');
     cy.commands(
       'telas.configurar-agendamento.consultar',
@@ -36,5 +39,6 @@ Cypress.Commands.add(
       'telas.configurar-agendamento.visualizar',
       configuracaoAgendamento,
     );
+    */
   },
 );

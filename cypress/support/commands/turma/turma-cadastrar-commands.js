@@ -9,6 +9,7 @@ Cypress.Commands.add('TelasCadastrosTurma', (values) => {
       .type(values?.unidadeEscolar);
     cy.contains(values?.unidadeEscolar).click();
   }
+  cy.wait(2000);
   cy.get('#etapa > select').select(values.etapa, { force: true });
   cy.get('#nome-form-item').clear().type(values.nome);
   cy.get('#turno > select').select(values.turno, { force: true });

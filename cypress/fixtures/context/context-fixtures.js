@@ -1,11 +1,15 @@
+const faker = require('faker-br');
+const nome = faker.name.findName('Secretaria Teste');
+const nomeEscola = faker.name.findName('Escola Teste');
+
 export const contextFixtures = {
-  secretariaEducacao: 'SEMED Ji-Paraná',
-  secretariaEducacaoRazaoSocial: 'SEMED Ji-Paraná',
-  unidadeEscolar: 'EMEIEF PAULO FREIRE 1',
+  secretariaEducacao: nome,
+  secretariaEducacaoRazaoSocial: nome,
+  unidadeEscolar: nomeEscola,
   cpfCrianca: '227.580.532-09',
   cpfResponsavel: '918.901.306-99',
   nomeCrianca: 'Cláudio Geraldo Benjamin Peixoto', // `Criança Teste ${faker.random.number()}`
-  etapa: 'Berçário – menores de 2 anos',
+  etapa: 'Maternal I – 2 anos a 2 anos e 11 meses',
   turno: 'Vespertino',
-  nomeTurma: `Maternal I B`, // Turma Teste ${faker.random.number()}
+  nomeTurma: `Turma Teste ${faker.random.number()}`,
 };

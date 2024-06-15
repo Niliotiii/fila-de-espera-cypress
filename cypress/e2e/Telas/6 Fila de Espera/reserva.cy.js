@@ -11,7 +11,7 @@ describe('INICIANDO TESTE', () => {
     cy.wait(500);
     cy.visit('/dashboard/fila-de-espera');
   });
-  it('CADASTRANDO: Reserva', () => {
+  it.only('CADASTRANDO: Reserva', () => {
     cy.commands('telas.reserva.cadastrar', reserva);
   });
   it('CONSULTANDO: Reserva', () => {

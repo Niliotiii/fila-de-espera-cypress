@@ -1,28 +1,47 @@
 import {
   configurarAgendamentoFixtures as configuracaoAgendamento,
   criancaFixtures as crianca,
+  entrevistaFixtures as entrevista,
   unidadeEscolarFixtures as escola,
   gerenciarCriteriosFixtures as gerenciarCriterios,
+  reservaFixtures as reserva,
   secretariaEducacaoFixtures as secretaria,
   servidorFixtures as servidor,
   turmaFixtures as turma,
   vagaFixtures as vaga,
 } from '../../fixtures';
 
-turma.perfil = true;
-vaga.perfil = true;
-crianca.perfil = true;
+// ---- TROCA PARA FLUXO DE ATENDENTE DE SECRETARIA ---- //
 
 configuracaoAgendamento.secretariaEducacao = secretaria.nomeFantasia;
 configuracaoAgendamento.secretariaEducacaoRazaoSocial =
   'Secretaria de Educação Editada';
+
 escola.secretariaEducacao = 'Secretaria de Educação Editada';
-vaga.turma = `Turma Editada - ${turma.etapa} - ${turma.turno}`;
+
+// ---- TROCA PARA FLUXO DE GESTOR DE CRECHE ---- //
+
+vaga.turma = 'PRIMEIRA OPCAO';
+turma.perfil = true;
+vaga.perfil = true;
+
+// ---- TROCA PARA FLUXO DE USUÁRIO ---- //
+
 crianca.agendamento = {
   municipio: secretaria.endereco.cidade,
   localAtendimento: secretaria.razaoSocial,
 };
 
+// ---- TROCA PARA FLUXO DE ATENDENTE SECRETARIA ---- //
+
+crianca.perfil = true;
+entrevista.cpfCrianca = crianca.cpf;
+entrevista.preferenciaUnidadeEscolar1 = escola.nomeFantasia;
+(reserva.secretariaEducacao = secretaria.nomeFantasia),
+  (reserva.unidadeEscolar = escola.nomeFantasia);
+reserva.nomeCrianca = crianca.nome;
+
+// ---------------------------------------------------------------------------- //
 const administradorMunicipal = {
   perfil: true,
   role: 'ADMINISTRADOR MUNICIPAL',
@@ -33,209 +52,99 @@ const administradorMunicipal = {
   lotacaoVinculada: secretaria.nomeFantasia,
 };
 
-describe('PERFIL: Gestor de Creche', () => {
-  // Login como ADMINISTRADOR
-  it.only('FAZENDO: LOGIN (ADMINISTRADOR)', () => {
+const gestorCreche = {
+  perfil: true,
+  role: 'GESTOR DE CRECHE',
+  nome: 'Danilo Saiter da Silva',
+  cpf: '034.424.442-33',
+  nivelAcesso: 'Gestor de Creche',
+  cargo: 'Diretor(a)',
+  lotacaoVinculada: escola.nomeFantasia,
+};
+
+const atendenteSecretaria = {
+  perfil: true,
+  role: 'ATENDENTE DE SECRETARIA',
+  nome: 'Danilo Saiter da Silva',
+  cpf: '034.424.442-33',
+  nivelAcesso: 'Atendente Secretaria',
+  cargo: 'Atendente',
+  lotacaoVinculada: secretaria.nomeFantasia,
+};
+// ---------------------------------------------------------------------------- //
+
+describe('INICIANDO TESTE', () => {
+  // ------------------------ FLUXO DE ADMINISTRADOR ------------------------ //
+
+  it('FAZENDO: LOGIN (ADMINISTRADOR)', () => {
     cy.commands('auth.Login', 'ADMINISTRADOR');
   });
 
-  //
-
-  it.only('FLUXO: SERVIDOR (ADMINISTRADOR) ', () => {
-    cy.commands('perfil.servidor', servidor);
-  });
-
-  it.only('FLUXO: SECRETARIA EDUCAÇÃO (ADMINISTRADOR) ', () => {
+  it('FLUXO: SECRETARIA EDUCAÇÃO', () => {
     cy.commands('perfil.secretaria-educacao', secretaria);
   });
 
-  //
-
-  // Alterar o perfil AUX para ADMINISTRADOR MUNICIPAL
-  it.only('ACESSANDO: Consultar Servidores', () => {
-    cy.visit('/dashboard/consulta/servidor');
-  });
-  it.only('CONSULTANDO: Servidor', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).contains('Consultar Servidores');
-    cy.commands('telas.consultas.servidor', administradorMunicipal);
-  });
-  it.only('EDITANDO: Servidor', () => {
-    cy.get(
-      'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-    ).contains('Consultar Servidores');
-    cy.commands('telas.consultas.servidor.editar', administradorMunicipal);
+  it('FLUXO: SERVIDOR', () => {
+    cy.commands('perfil.servidor', servidor);
   });
 
-  //
+  // ------------------------ FLUXO DE ADMINISTRADOR MUNICIPAL ------------------------ //
 
-  // Login como ADMINISTRADOR MUNICIPAL usando o perfil AUX
-  it.only('FAZENDO: Login como ADMINISTRADOR MUNICIPAL', () => {
-    cy.commands('auth.Login', 'AUX');
+  it('TROCANDO-ACESSO: (ADMINISTRADOR MUNICIPAL)', () => {
+    cy.commands('perfil.troca-acesso', administradorMunicipal);
   });
 
-  //
-
-  it.only('FLUXO: CONFIGURAR AGENDAMENTO (ADMINISTRADOR MUNICIPAL) ', () => {
+  it('FLUXO: CONFIGURAR AGENDAMENTO', () => {
     cy.commands('perfil.configurar-agendamento', configuracaoAgendamento);
   });
 
-  it.only('FLUXO: GERENCIAR CRITÉRIOS (ADMINISTRADOR MUNICIPAL) ', () => {
+  it('FLUXO: GERENCIAR CRITÉRIOS', () => {
     cy.commands('perfil.gerenciar-criterios', gerenciarCriterios);
   });
 
-  it.only('FLUXO: UNIDADE ESCOLAR (ADMINISTRADOR MUNICIPAL) ', () => {
+  it('FLUXO: UNIDADE ESCOLAR', () => {
     cy.commands('perfil.unidade-escolar', escola);
   });
 
-  //
+  // ------------------------ FLUXO DO USUÁRIO ------------------------ //
 
-  it.only('FLUXO: PORTAL AGENDAMENTO ', () => {
+  it('FLUXO: PORTAL AGENDAMENTO ', () => {
     cy.commands('perfil.portal-agendamento', crianca);
   });
 
-  // //
-  // //
-  // //
-  // //
-  // //
-  // //
+  // ------------------------ FLUXO DE GESTOR DE CRECHE ------------------------ //
 
-  // // Login
-  // it('FAZENDO: Login', () => {
-  //   cy.commands('auth.Login', 'AUX');
-  // });
+  it('TROCANDO-ACESSO: (GESTOR DE CRECHE)', () => {
+    cy.commands('perfil.troca-acesso', gestorCreche);
+  });
+  it('FLUXO: TURMA', () => {
+    cy.commands('perfil.turma', turma);
+  });
+  it('FLUXO: VAGA', () => {
+    cy.commands('perfil.vaga', vaga);
+  });
 
-  // // Fluxo de Turma - Cadastrar, Consultar, Visualizar, Editar
-  // it('ACESSANDO: Cadastrar Turmas', () => {
-  //   cy.visit('/dashboard/cadastro/turma');
-  // });
-  // it('CADASTRANDO: Turma', () => {
-  //   cy.get(
-  //     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-  //   ).should('contain', 'Cadastrar Turmas');
-  //   cy.commands('telas.cadastros.turma', turma);
-  // });
-  // it('CONSULTANDO: Turma', () => {
-  //   cy.get(
-  //     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-  //   ).should('contain', 'Consultar Turmas');
-  //   cy.commands('telas.consultas.turma', turma);
-  // });
-  // it('VISUALIZANDO: Turma', () => {
-  //   cy.get(
-  //     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-  //   ).should('contain', 'Consultar Turmas');
-  //   cy.commands('telas.consultas.turma.visualizar', turma);
-  // });
-  // it('CONSULTANDO: Turma', () => {
-  //   cy.get(
-  //     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-  //   ).should('contain', 'Consultar Turmas');
-  //   cy.commands('telas.consultas.turma', turma);
-  // });
-  // it('EDITANDO: Turma', () => {
-  //   cy.get(
-  //     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-  //   ).should('contain', 'Consultar Turmas');
-  //   cy.commands('telas.consultas.turma.editar', turma);
-  // });
-  // // Apartir desse ponto turma já foi alterado
-  // it('CONSULTANDO: Turma', () => {
-  //   cy.get(
-  //     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-  //   ).should('contain', 'Consultar Turmas');
-  //   cy.commands('telas.consultas.turma', turma);
-  // });
-  // it('VISUALIZANDO: Turma', () => {
-  //   cy.get(
-  //     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-  //   ).should('contain', 'Consultar Turmas');
-  //   cy.commands('telas.consultas.turma.visualizar', turma);
-  // });
+  // ------------------------ FLUXO DE ATENDENTE SECRETARIA ------------------------ //
 
-  // //Fluxo de Vagas - Cadastrar, Consultar, Visualizar, Editar, Deletar
-  // it('ACESSANDO: Cadastrar Vagas', () => {
-  //   cy.visit('/dashboard/cadastro/gerar-vaga');
-  // });
-  // it('CADASTRANDO: Vagas', () => {
-  //   cy.get(
-  //     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-  //   ).should('contain', 'Cadastrar Vagas');
-  //   cy.commands('telas.cadastros.vaga', vaga);
-  // });
-  // it('CONSULTANDO: Vagas', () => {
-  //   cy.get(
-  //     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-  //   ).contains('Consultar Vagas');
-  //   cy.commands('telas.consultas.vaga', vaga);
-  // });
-  // it('VISUALIZANDO: Vagas', () => {
-  //   cy.get(
-  //     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-  //   ).contains('Consultar Vagas');
-  //   cy.commands('telas.consultas.vaga.visualizar', vaga);
-  // });
-  // it('DELETANDO: Vagas', () => {
-  //   cy.get(
-  //     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-  //   ).contains('Consultar Vagas');
-  //   cy.commands('telas.consultas.vaga.deletar', vaga);
-  // });
+  it('FAZENDO: LOGIN (ADMINISTRADOR)', () => {
+    cy.commands('auth.Login', 'ADMINISTRADOR');
+  });
 
-  // //Fluxo de Turma - Deletar
-  // it('ACESSANDO: Cadastrar Turmas', () => {
-  //   cy.visit('/dashboard/consulta/turma');
-  // });
-  // it('CONSULTANDO: Turma', () => {
-  //   cy.get(
-  //     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-  //   ).should('contain', 'Consultar Turmas');
-  //   cy.commands('telas.consultas.turma', turma);
-  // });
-  // it('DELETANDO: Turma', () => {
-  //   cy.get(
-  //     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-  //   ).should('contain', 'Consultar Turmas');
-  //   cy.commands('telas.consultas.turma.deletar', turma);
-  // });
+  it('TROCANDO-ACESSO: (ATENDENTE SECRETARIA)', () => {
+    cy.commands('perfil.troca-acesso', atendenteSecretaria);
+  });
 
-  // //Fluxo para funções disponíveis apenas para consulta no perfil Gestor de Creche
-  // // Consultar Critérios
-  // it('ACESSANDO: Consultar Critérios', () => {
-  //   cy.visit('/dashboard/criterios/consultar-criterios');
-  //   cy.get(
-  //     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-  //   ).should('contain', 'Consultar Critérios');
-  // });
-  // // Consultar Unidades Escolares
-  // it('ACESSANDO: Consultar Critérios', () => {
-  //   cy.visit('/dashboard/consulta/unidade-escolar');
-  //   cy.get(
-  //     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-  //   ).should('contain', 'Consultar Unidades Escolares');
-  // });
-  // // Consultar Reserva de Vagas
-  // it('ACESSANDO: Consultar Critérios', () => {
-  //   cy.visit('/dashboard/consulta/reserva-vaga');
-  //   cy.get(
-  //     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-  //   ).should('contain', 'Consultar Reservas de Vagas');
-  // });
-  // // Fila de Espera
-  // it('ACESSANDO: Consultar Critérios', () => {
-  //   cy.visit('/dashboard/consulta/fila-de-espera');
-  //   cy.get(
-  //     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
-  //   ).should('contain', 'Fila de Espera');
-  // });
+  it('SELECIONANDO: Contexto', () => {
+    cy.commands('context.escola');
+  });
 
-  // --------------------------------------------------------
-  it.only('FLUXO: CRIANÇA (ATENDENTE SECRETARIA)', () => {
+  it('FLUXO: CRIANÇA', () => {
     cy.commands('perfil.crianca', crianca);
   });
-  it.only('FLUXO: ENTREVISTA (ATENDENTE )', () => {
+  it('FLUXO: ENTREVISTA', () => {
     cy.commands('perfil.entrevista', entrevista);
+  });
+  it('FLUXO: RESERVA DE VAGA', () => {
+    cy.commands('perfil.reserva', reserva);
   });
 });

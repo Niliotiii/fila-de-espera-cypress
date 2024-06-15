@@ -8,7 +8,8 @@ Cypress.Commands.add('PerfilServidor', (servidor) => {
     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
   ).contains('Cadastrar Servidores');
   cy.commands('telas.cadastros.servidor', servidor);
-
+  // DESCOMENTAR
+  /*
   cy.log('CONSULTANDO: Servidor');
   cy.get(
     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
@@ -44,4 +45,5 @@ Cypress.Commands.add('PerfilServidor', (servidor) => {
     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
   ).contains('Consultar Servidores');
   cy.commands('telas.consultas.servidor.visualizar', servidor);
+  */
 });

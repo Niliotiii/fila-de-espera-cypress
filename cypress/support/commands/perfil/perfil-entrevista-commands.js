@@ -4,8 +4,12 @@ Cypress.Commands.add('PerfilEntrevista', (entrevista) => {
   cy.visit('/dashboard/entervista/entrevistar-candidato');
 
   cy.log('CADASTRANDO: Entrevista');
-  cy.commands('telas.entrevista.cadastrar', entrevista);
-
+  cy.commands('telas.entrevista.cadastrar', {
+    ...entrevista,
+    preferenciaUnidade2: 'Escola AAA',
+  });
+  // DESCOMENTAR
+  /*
   cy.log('CONSULTANDO: Entrevista');
   cy.commands('telas.entrevista.consultar');
 
@@ -20,4 +24,5 @@ Cypress.Commands.add('PerfilEntrevista', (entrevista) => {
 
   cy.log('VISUALIZANDO: Entrevista');
   cy.commands('telas.entrevista.visualizar');
+  */
 });

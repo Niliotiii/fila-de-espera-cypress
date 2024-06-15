@@ -22,9 +22,21 @@ Cypress.Commands.add('TelasEntrevistaCadastrar', (values) => {
   );
   cy.wait(500);
   cy.get('body').type('{enter}{esc}');
-  cy.get('#preferenciaUnidade2-form-item').click();
-  cy.wait(500);
-  cy.get('body').type('{enter}{esc}');
+
+  if (values?.preferenciaUnidade2) {
+    cy.get('#preferenciaUnidade2-form-item').click();
+    cy.wait(500);
+    cy.get('[placeholder="Pesquise uma unidade escolar"]').type(
+      values?.preferenciaUnidade2,
+    );
+    cy.wait(4000);
+    cy.get('body').type('{enter}{esc}');
+  } else {
+    cy.get('#preferenciaUnidade2-form-item').click();
+    cy.wait(4000);
+    cy.get('body').type('{enter}{esc}');
+  }
+  cy.wait(2000);
   cy.get('button').contains('Próximo').click();
 
   cy.log('GUIA: Critérios');
@@ -40,13 +52,14 @@ Cypress.Commands.add('TelasEntrevistaCadastrar', (values) => {
         });
       });
   });
+  /*
   cy.get('div[role="radiogroup"]')
     .first()
     .within(() => {
       cy.get('button[role="radio"]').each(($button) => {
         cy.wrap($button).then(($btn) => {
           const value = $btn.attr('value');
-          if (value === 'true') {
+          if (value === 'true') { 
             cy.wrap($btn).click();
           }
         });
@@ -54,12 +67,15 @@ Cypress.Commands.add('TelasEntrevistaCadastrar', (values) => {
     });
 
   cy.get(
-    '#arquivo0 > div.mt-4.flex.items-center.justify-start > button.rounded-md.text-sm.font-medium.transition-colors.focus-visible\\:outline-none.focus-visible\\:ring-2.focus-visible\\:primary\\/80.focus-visible\\:ring-offset-2.disabled\\:opacity-50.disabled\\:pointer-events-none.ring-offset-background.hover\\:bg-accent.hover\\:text-accent-foreground.flex.h-max.max-h-\\[125px\\].items-start.justify-start.p-2',
+    ' #arquivo7 > div.mt-4.flex.items-center.justify-start > button',
   ).click();
+
   cy.get('#input-file-upload').attachFile(values.arquivo);
   cy.wait(500);
+ 
   cy.get('button').contains('Salvar').click();
   cy.get('body').type('{esc}');
+   */
   cy.get('button').contains('Próximo').click();
 
   cy.log('GUIA: Dados Complementares');

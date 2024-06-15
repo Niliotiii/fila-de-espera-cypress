@@ -11,8 +11,8 @@ Cypress.Commands.add('AuthLogin', (perfil) => {
       break;
     case 'AUX':
       {
-        username = 'aaa';
-        password = 'bbb';
+        username = '03442444233';
+        password = '@Danilo12';
       }
       break;
   }

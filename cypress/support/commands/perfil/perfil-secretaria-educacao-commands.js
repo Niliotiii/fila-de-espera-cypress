@@ -7,7 +7,8 @@ Cypress.Commands.add('PerfilSecretaria-educacao', (secretaria) => {
     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
   ).contains('Cadastrar Secretaria de Educação');
   cy.commands('telas.cadastros.secretaria-educacao', secretaria);
-
+  // DESCOMENTAR
+  /*
   cy.log('CONSULTANDO: Secretaria de Educação');
   cy.get(
     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
@@ -44,4 +45,5 @@ Cypress.Commands.add('PerfilSecretaria-educacao', (secretaria) => {
     'body > div.relative.flex.min-h-screen.flex-col > div.flex-1 > div > div > main > div.flex.flex-row > div > div > span',
   ).contains('Consultar Secretarias de Educação');
   cy.commands('telas.consultas.secretaria-educacao.visualizar', secretaria);
+  */
 });

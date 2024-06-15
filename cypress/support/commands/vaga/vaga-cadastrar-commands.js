@@ -13,14 +13,15 @@ Cypress.Commands.add('TelasCadastrosVaga', (values) => {
       values.servidor = valor;
     });
   cy.get('#anoLetivo > select').select(values.anoLetivo, { force: true });
-  // if (!values.perfil) {
-  //  cy.get('#escola-form-item').click();
-  //  cy.get('[placeholder="Pesquise uma unidade escolar"]')
-  //    .clear()
-  //    .type(values?.unidadeEscolar);
-  //  cy.contains(values?.unidadeEscolar).click();
-  // }
-  cy.get('#turma > select').select(values.turma, { force: true });
+
+  cy.log(values.turma);
+  if (values.turma === 'PRIMEIRA OPCAO') {
+    cy.get('#turma-form-item').click();
+    cy.wait(3000);
+    cy.get('body').type('{enter}');
+  } else {
+    cy.selectVerification('#turma > select', '#turma-form-item', values.turma);
+  }
   cy.get('#quantidadeVagas-form-item').clear().type(values.quantidadeVagas);
   cy.get('button').contains('Salvar').click();
 

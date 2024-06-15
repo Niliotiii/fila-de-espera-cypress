@@ -28,7 +28,7 @@ Cypress.Commands.add('TelasConfigurar-agendamentoCadastrar', (values) => {
       cy.log('⚠️ Agendamento já configurado!');
     } else {
       cy.get('button').contains('Salvar').click();
-      cy.wait(2000);
+      cy.wait(3000);
       cy.contains('Agendamento cadastrado com sucesso!').should('exist');
     }
   });

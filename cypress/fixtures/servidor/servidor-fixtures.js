@@ -1,10 +1,11 @@
 import { contatoFixtures as contato } from '../contato/contato-fixtures';
+import { contextFixtures as context } from '../context/context-fixtures';
 
 const faker = require('faker-br');
 
 export const servidorFixtures = {
   // Identificação
-  lotacaoVinculada: 'SEMED Ji-Paraná',
+  lotacaoVinculada: context.secretariaEducacao,
   nome: faker.name.findName(),
   cpf: faker.br.cpf({ format: true }),
   rg: faker.br.rg(),

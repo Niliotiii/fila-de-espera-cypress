@@ -6,7 +6,11 @@ Cypress.Commands.add('TelasConsultasServidorEditar', (values) => {
       cy.get('td:nth-child(7) > div > button:nth-child(2)').click();
     });
 
-  if (values.role === 'ADMINISTRADOR MUNICIPAL') {
+  if (
+    values.role === 'ADMINISTRADOR MUNICIPAL' ||
+    values.role === 'GESTOR DE CRECHE' ||
+    values.role === 'ATENDENTE DE SECRETARIA'
+  ) {
     cy.log('GUIA: Identificação');
     cy.get('button').contains('Próximo').click();
 
@@ -18,13 +22,46 @@ Cypress.Commands.add('TelasConsultasServidorEditar', (values) => {
       force: true,
     });
     cy.get('#cargo > select').select(values.cargo, { force: true });
-    cy.get('#instituicaoId-form-item').click();
-    cy.get('[placeholder="Pesquise uma secretaria.."]')
-      .clear()
-      .type(values.lotacaoVinculada);
-
-    cy.contains(values.lotacaoVinculada).click();
-    cy.get('body').type('{esc}');
+    cy.get('body').then(($body) => {
+      if (
+        $body.find('#instituicaoId-form-item > div > div svg.lucide-x').length >
+        0
+      ) {
+        cy.get('#instituicaoId-form-item > div > div').click();
+      } else {
+        // O elemento não existe, continue sem falhar o teste
+        cy.log('Elemento não encontrado, continuando o teste...');
+      }
+    });
+    cy.wait(2000);
+    cy.get('body').then(($body) => {
+      if ($body.find('span:contains("Selecione uma Secretaria")').length > 0) {
+        cy.log('Seletor "Selecione uma Unidade Escolar" encontrada');
+        cy.get('#instituicaoId-form-item').click();
+        cy.get('[placeholder="Pesquise uma secretaria.."]')
+          .clear()
+          .type(values.lotacaoVinculada);
+        cy.wait(3000);
+        cy.get('body').type('{enter}{esc}');
+      } else {
+        cy.log('Seletor "Selecione uma Unidade Escolar" NÃO encontrada');
+        if (
+          $body.find('span:contains("Selecione uma Unidade Escolar")').length >
+          0
+        ) {
+          cy.log('Seletor "Selecione uma Unidade Escolar" encontrada');
+          cy.get('#instituicaoId-form-item').click();
+          cy.get('[placeholder="Pesquise uma unidade escolar"]')
+            .clear()
+            .type(values.lotacaoVinculada);
+          cy.wait(3000);
+          cy.get('body').type('{enter}{esc}');
+        } else {
+          cy.log('Seletor "Selecione uma Unidade Escolar" NÃO encontrada');
+        }
+      }
+    });
+    cy.wait(3000);
     cy.get('button').contains('Salvar').click();
     cy.contains('Servidor editado com sucesso').should('exist');
   } else {
